@@ -9,8 +9,10 @@ from database.models.accounts import GenderEnum
 
 
 def validate_name(name: str):
-    if re.search(r"^[A-Za-z]*$", name) is None:
-        raise ValueError(f"{name} contains non-english letters")
+    if not name:
+        raise ValueError("Name cannot be empty")
+    if re.search(r"^[A-Za-z]+$", name) is None:
+        raise ValueError(f"{name} contains non-English letters")
 
 
 def validate_image(avatar: UploadFile) -> None:
@@ -34,10 +36,8 @@ def validate_image(avatar: UploadFile) -> None:
 
 
 def validate_gender(gender: str) -> None:
-    if gender not in GenderEnum.__members__.values():
-        raise ValueError(
-            f"Gender must be one of: {', '.join(g.value for g in GenderEnum)}"
-        )
+    if gender not in [g.value for g in GenderEnum]:
+        raise ValueError(f"Gender must be one of: {', '.join(g.value for g in GenderEnum)}")
 
 
 def validate_birth_date(birth_date: date) -> None:

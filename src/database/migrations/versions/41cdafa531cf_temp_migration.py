@@ -25,7 +25,7 @@ def upgrade() -> None:
         "refresh_tokens",
         "token",
         existing_type=sa.VARCHAR(length=64),
-        type_=sa.String(length=512),
+        type_=sa.VARCHAR(length=512),
         existing_nullable=False,
     )
     # ### end Alembic commands ###
@@ -36,7 +36,7 @@ def downgrade() -> None:
     op.alter_column(
         "refresh_tokens",
         "token",
-        existing_type=sa.String(length=512),
+        existing_type=sa.VARCHAR(length=512),
         type_=sa.VARCHAR(length=64),
         existing_nullable=False,
     )

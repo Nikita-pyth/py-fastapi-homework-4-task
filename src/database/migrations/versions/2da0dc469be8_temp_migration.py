@@ -25,21 +25,21 @@ def upgrade() -> None:
         "activation_tokens",
         "token",
         existing_type=sa.VARCHAR(length=255),
-        type_=sa.String(length=64),
+        type_=sa.VARCHAR(length=64),
         existing_nullable=False,
     )
     op.alter_column(
         "password_reset_tokens",
         "token",
         existing_type=sa.VARCHAR(length=255),
-        type_=sa.String(length=64),
+        type_=sa.VARCHAR(length=64),
         existing_nullable=False,
     )
     op.alter_column(
         "refresh_tokens",
         "token",
         existing_type=sa.VARCHAR(length=255),
-        type_=sa.String(length=64),
+        type_=sa.VARCHAR(length=64),
         existing_nullable=False,
     )
     # ### end Alembic commands ###
@@ -50,21 +50,21 @@ def downgrade() -> None:
     op.alter_column(
         "refresh_tokens",
         "token",
-        existing_type=sa.String(length=64),
+        existing_type=sa.VARCHAR(length=64),
         type_=sa.VARCHAR(length=255),
         existing_nullable=False,
     )
     op.alter_column(
         "password_reset_tokens",
         "token",
-        existing_type=sa.String(length=64),
+        existing_type=sa.VARCHAR(length=64),
         type_=sa.VARCHAR(length=255),
         existing_nullable=False,
     )
     op.alter_column(
         "activation_tokens",
         "token",
-        existing_type=sa.String(length=64),
+        existing_type=sa.VARCHAR(length=64),
         type_=sa.VARCHAR(length=255),
         existing_nullable=False,
     )
