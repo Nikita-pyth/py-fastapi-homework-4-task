@@ -23,14 +23,14 @@ from security.utils import generate_secure_token
 
 
 class UserGroupEnum(str, enum.Enum):
-    USER = "user"
-    MODERATOR = "moderator"
-    ADMIN = "admin"
+    USER = "USER"
+    MODERATOR = "MODERATOR"
+    ADMIN = "ADMIN"
 
 
 class GenderEnum(str, enum.Enum):
-    MAN = "man"
-    WOMAN = "woman"
+    MAN = "MAN"
+    WOMAN = "WOMAN"
 
 
 class UserGroupModel(Base):
@@ -153,8 +153,6 @@ class UserProfileModel(Base):
         ForeignKey("users.id", ondelete="CASCADE"), nullable=False, unique=True
     )
     user: Mapped[UserModel] = relationship("UserModel", back_populates="profile")
-
-    __table_args__ = (UniqueConstraint("user_id"),)
 
     def __repr__(self):
         return (
